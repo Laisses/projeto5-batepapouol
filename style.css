@@ -2,8 +2,155 @@
     box-sizing: border-box;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@font-face {
+    font-family: "Roboto";
+    src: url("assets/fonts/Roboto-Light.ttf");
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url("assets/fonts/Roboto-Regular.ttf");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url("assets/fonts/Roboto-Bold.ttf");
+    font-weight: 700;
+}
 
 body {
     font-family: 'Roboto', sans-serif;
+    background-color: #F3F3F3;
+    font-size: 14px;
+}
+
+.navbar {
+    width: 100%;
+    height: 80px;
+    padding: 0 22px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: fixed;
+    top: 0;
+    right: auto;
+}
+
+.navbar__logo img {
+    width: 75px;
+    height: 53px;
+}
+
+.navbar__icon img {
+    width: 45px;
+    height: 45px;
+}
+
+.msg {
+    margin-top: 106px;
+    margin-bottom: 90px;
+}
+
+.msg li {
+    padding: 12px;
+    margin-bottom: 4px;
+    border-radius: 2px;
+    line-height: 20px;
+
+    display: flex;
+    align-items: center; 
+}
+
+.msg__time p::before {
+    content: "(";
+}
+
+.msg__time p::after {
+    content: ")";
+}
+
+.msg__chat {
+    margin-left: 8px;
+}
+
+.msg__chat span {
+    font-weight: bold;
+}
+
+.msg__notification--in, .msg__notification--out {
+    background-color: #DCDCDC;
+}
+
+.msg__public {
+    background-color: #ffffff;
+}
+
+.msg__private {
+    background-color: #FFDEDE;
+}
+
+.chatbox {
+    width: 100%;
+    height: 80px;
+    padding: 0 10px;
+    background-color: #ffffff;
+    box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: fixed;
+    bottom: 0;
+    right: auto;
+}
+
+.chatbox__text {
+    width: 100%;
+}
+.chatbox__text textarea {
+    width: 100%;
+    border: none;
+    resize: none;
+    outline: none;
+}
+
+::placeholder {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 400;
+    color: #000000;
+}
+
+.chatbox__text  p {
+    color: #505050;
+    font-weight: 300;
+}
+
+.chatbox__text span {
+    font-style: italic;
+}
+
+.chatbox__button {    
+    border: none;
+    background-color: transparent;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chatbox__button img {
+    width: 26px;
+}
+
+.hidden {
+    display: none;
 }
