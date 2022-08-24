@@ -83,7 +83,7 @@ body {
     font-weight: bold;
 }
 
-.msg__notification--in, .msg__notification--out {
+.msg__notification {
     background-color: #DCDCDC;
 }
 
