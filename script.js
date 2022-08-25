@@ -23,6 +23,7 @@ const getsMessages = () => {
     axios.get(URL)
         .then(res => {
             createMessages(res.data);
+            document.querySelector("body").scrollIntoView(false);
         })
         .catch(err => {
             console.log(err);
