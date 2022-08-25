@@ -18,18 +18,21 @@ const joinChatRoom = () => {
         });
 };
 
-const getsMessages = () => {
+
+
+const getMessages = () => {
     const URL = "https://mock-api.driven.com.br/api/v6/uol/messages";
     axios.get(URL)
         .then(res => {
             createMessages(res.data);
             document.querySelector("body").scrollIntoView(false);
+            console.log("oi");
         })
         .catch(err => {
             console.log(err);
         });
-
 };
+//setInterval(getMessages, 3000);
 
 const createMessages = messages => {
     const ul = document.querySelector(".msg");
