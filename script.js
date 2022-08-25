@@ -1,24 +1,19 @@
-const joinChatRoom = () => {
-    const URL = "https://mock-api.driven.com.br/api/v6/uol/participants";    
-    const name = prompt("Qual o seu nome?");
+let userName;
+const checkNick = () => {
+    const URL = "https://mock-api.driven.com.br/api/v6/uol/participants";
+    const user = {name: prompt("Qual o seu nome?")};
     
-    const dado = {
-        name,
-    };
-    
-    axios.post(URL, dado)
-        .then(res => {
-            console.log(res);
+    return axios.post(URL, user)
+        .then(res => {            
+            userName = user;
         })
         .catch(err => {
             if (err.response.status === 400) {
                 alert("Esse nick já está em uso! Escolha outro.");
-                joinChatRoom();
+                //checkNick();
             }
         });
 };
-
-
 
 const getMessages = () => {
     const URL = "https://mock-api.driven.com.br/api/v6/uol/messages";
@@ -26,18 +21,24 @@ const getMessages = () => {
         .then(res => {
             createMessages(res.data);
             document.querySelector("body").scrollIntoView(false);
-            console.log("oi");
         })
         .catch(err => {
             console.log(err);
         });
 };
-//setInterval(getMessages, 3000);
 
 const createMessages = messages => {
     const ul = document.querySelector(".msg");
 
-    messages.forEach(message => {
+    messages
+    .filter(message => {
+        if (message.to !== userName && message.type === "private_message") {
+            return false;
+        } else {
+            return true
+        }
+    })
+    .forEach(message => {
         const messageType = document.createElement("li");
         
         const timeWrapper = document.createElement("div");
@@ -79,5 +80,11 @@ const createMessages = messages => {
     });
 };
 
+//Tem que fazer a mensagem reservada só ser mostrada se o nome do destinatário for igual ao nome do usuário
 
-
+const controlaStuffTemp = () => {
+    checkNick().then(() => {        
+        //setInterval(getMessages, 3000);
+        getMessages();
+    });
+}
