@@ -96,6 +96,8 @@ const createMessages = messages => {
 const sendPublicMessage = () => {   
     const URL = "https://mock-api.driven.com.br/api/v6/uol/messages";
     let messageContent = document.querySelector("textarea").value;
+    let placeholder = document.querySelector("textarea").placeholder;
+    
     const message = {
         from: userName.name,
         to: "Todos",
@@ -105,13 +107,22 @@ const sendPublicMessage = () => {
 
     axios.post(URL, message)
         .then(res => {
-            
-            getMessages();
+            console.log(res);
             messageContent = "";
+            placeholder = "";
+            getMessages();            
         })
         .catch(err => {
             console.log(err);
+            window.location.reload();
         });
+};
+
+const sendMessagesWithEnter = (e) => {
+    if (e.key === "Enter") {
+        e.preventDefault();
+        sendPublicMessage();
+    }
 };
 
 const controlaStuffTemp = () => {
@@ -124,3 +135,4 @@ const controlaStuffTemp = () => {
 };
 
 document.querySelector("button").onclick = sendPublicMessage;
+document.querySelector("textarea").onkeydown = sendMessagesWithEnter;
