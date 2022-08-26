@@ -1,10 +1,11 @@
 let userName;
+
 const checkNick = () => {
     const URL = "https://mock-api.driven.com.br/api/v6/uol/participants";
     const user = {name: prompt("Qual o seu nome?")};
-    
+
     return axios.post(URL, user)
-        .then(res => {            
+        .then(res => {
             userName = user;
         })
         .catch(err => {
@@ -14,6 +15,18 @@ const checkNick = () => {
             }
         });
 };
+
+const pingConnection = () => {
+    const URL = "https://mock-api.driven.com.br/api/v6/uol/status";    
+
+    axios.post(URL, userName)
+        .then(res => {
+            console.log("tô aqui ainda");
+        })
+        .catch(err => {
+            console.log(err);
+        });
+}
 
 const getMessages = () => {
     const URL = "https://mock-api.driven.com.br/api/v6/uol/messages";
@@ -80,11 +93,16 @@ const createMessages = messages => {
     });
 };
 
-//Tem que fazer a mensagem reservada só ser mostrada se o nome do destinatário for igual ao nome do usuário
+const sendPublicMessage = () => {
+    console.log(userName);
+};
 
 const controlaStuffTemp = () => {
-    checkNick().then(() => {        
+    checkNick().then(() => {   
         //setInterval(getMessages, 3000);
         getMessages();
+        //setInterval(pingConnection, 5000);  
+        sendMessage();
     });
-}
+    
+};
