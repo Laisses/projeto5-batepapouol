@@ -126,12 +126,15 @@ body {
     outline: none;
 }
 
-::placeholder {
+::placeholder, textarea {
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
-    font-style: italic;
     font-weight: 400;
     color: #000000;
+}
+
+::placeholder {    
+    font-style: italic;
 }
 
 .chatbox__text  p {
