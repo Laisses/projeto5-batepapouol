@@ -12,112 +12,132 @@
     <link rel="icon" href="assets/favicon.svg" type="image/x-icon">
 </head>
 <body>
+    <header>
+        <section class="menu">
+            <div class="menu__contacts">
+                <h2>Escolha um contato para enviar mensagem:</h2>
+                <ul>
+                    <li data-identifier="participant">
+                        <div>
+                            <img src="assets/people.svg" alt="ícone de silhueta">
+                            <p>Todos</p>
+                        </div>
+                        <div class="checkmark checked"></div>
+                    </li>
+                    <li>
+                        <div>
+                            <img src="assets/person-circle.svg" alt="ícone de uma pessoa">
+                            <p>João</p>
+                        </div>
+                        <div class="checkmark"></div>
+                    </li>
+                    <li>
+                        <div>
+                            <img src="assets/person-circle.svg" alt="ícone de uma pessoa">
+                            <p>João</p>
+                        </div>
+                        <div class="checkmark"></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="menu__visibility">
+                <h2>Escolha a visibilidade:</h2>
+                <ul>
+                    <li data-identifier="visibility">
+                        <div>
+                            <img src="assets/lock-open.svg " alt="ícone de um cadeado aberto">
+                            <p>Público</p>
+                        </div>
+                        <div class="checkmark checked"></div>
+                    </li>
+                    <li data-identifier="visibility">
+                        <div>
+                            <img src="assets/lock-closed.svg" alt="ícone de um cadeado fechado">
+                            <p>Reservadamente</p>
+                        </div>
+                        <div class="checkmark"></div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </header>
     <main>
-        <nav class="navbar">
-            <div class="navbar__logo">
-                <img src="assets/logo1.png" alt="logo Uol">
+        <section class="login">
+            <div class="login__logo">
+                <img src="assets/logo2.png" alt="logo do bate papo UOL">
             </div>
-            <div class="navbar__icon">
-                <img src="assets/people.svg" alt="ícone de silhueta de pessoas">
+            <form class="login__form">
+                <input type="text" name="username" id="username" placeholder="Digite seu nome">
+                <label for="username" aria-label="digite o seu nome aqui"></label>
+                <button>Entrar</button>
+            </form>
+            <div class="login__loading hidden">
+                <div class="loader"></div>
+                <p>Entrando...</p>
             </div>
-        </nav>
-        <div class="msg__margin--top"></div>
-        <ul class="msg">
-            <li class="msg__notification">
-                <div class="msg__time">
-                    <p>09:21:45</p>
+        </section>
+        <section class="chat">
+            <nav class="navbar">
+                <div class="navbar__logo">
+                    <img src="assets/logo1.png" alt="logo Uol">
                 </div>
-                <div class="msg__chat">
-                    <p><span>João</span>  entra na sala...</p>
+                <div class="navbar__icon">
+                    <img src="assets/people.svg" alt="ícone de silhueta de pessoas">
                 </div>
-            </li>
-    
-            <li class="msg__public">
-                <div class="msg__time">
-                    <p>09:22:28</p>
+            </nav>
+            <div class="msg__margin--top"></div>
+            <ul class="msg">
+                <li class="msg__notification">
+                    <div class="msg__time">
+                        <p>09:21:45</p>
+                    </div>
+                    <div class="msg__chat">
+                        <p><span>João</span>  entra na sala...</p>
+                    </div>
+                </li>
+        
+                <li class="msg__public">
+                    <div class="msg__time">
+                        <p>09:22:28</p>
+                    </div>
+                    <div class="msg__chat">
+                        <p><span>João</span> para <span>Todos</span>: Bom dia</p>
+                    </div>
+                </li>
+                
+                <li class="msg__private">
+                    <div class="msg__time">
+                        <p>09:22:48</p>
+                    </div>
+                    <div class="msg__chat">
+                        <p><span>João</span> reservadamente para <span>Maria</span>: Oi gatinha quer tc?</p>
+                    </div>
+                </li>
+                <li class="msg__notification">
+                    <div class="msg__time">
+                        <p>09:22:58</p>
+                    </div>
+                    <div class="msg__chat">
+                        <p><span>Maria</span>  sai da sala...</p>
+                    </div>
+                </li>
+            </ul>
+            <div class="msg__margin--bottom"></div>
+            <div class="chatbox">
+                <div class="chatbox__text">
+                    <label for="message"></label>
+                    <textarea name="message" id="message" placeholder="Escreva aqui..."></textarea>
+                    <p class ="hidden">Enviando para Maria<span> reservadamente</span></p>
                 </div>
-                <div class="msg__chat">
-                    <p><span>João</span> para <span>Todos</span>: Bom dia</p>
-                </div>
-            </li>
-            
-            <li class="msg__private">
-                <div class="msg__time">
-                    <p>09:22:48</p>
-                </div>
-                <div class="msg__chat">
-                    <p><span>João</span> reservadamente para <span>Maria</span>: Oi gatinha quer tc?</p>
-                </div>
-            </li>
-            <li class="msg__notification">
-                <div class="msg__time">
-                    <p>09:22:58</p>
-                </div>
-                <div class="msg__chat">
-                    <p><span>Maria</span>  sai da sala...</p>
-                </div>
-            </li>
-        </ul>
-        <div class="msg__margin--bottom"></div>
-        <div class="chatbox">
-            <div class="chatbox__text">
-                <label for="message"></label>
-                <textarea name="message" id="message" placeholder="Escreva aqui..."></textarea>
-                <p class ="hidden">Enviando para Maria<span> reservadamente</span></p>
+                <button class="chatbox__button">
+                    <img src="assets/paper-plane-outline.svg" alt="botão de enviar">
+                </button>
             </div>
-            <button class="chatbox__button">
-                <img src="assets/paper-plane-outline.svg" alt="botão de enviar">
-            </button>
-        </div>
+        </section>
+        
     </main>
     <!--<div class="overlay"></div>-->
-    <section class="menu">
-        <div class="menu__contacts">
-            <h2>Escolha um contato para enviar mensagem:</h2>
-            <ul>
-                <li data-identifier="participant">
-                    <div>
-                        <img src="assets/people.svg" alt="ícone de silhueta">
-                        <p>Todos</p>
-                    </div>
-                    <div class="checkmark checked"></div>
-                </li>
-                <li>
-                    <div>
-                        <img src="assets/person-circle.svg" alt="ícone de uma pessoa">
-                        <p>João</p>
-                    </div>
-                    <div class="checkmark"></div>
-                </li>
-                <li>
-                    <div>
-                        <img src="assets/person-circle.svg" alt="ícone de uma pessoa">
-                        <p>João</p>
-                    </div>
-                    <div class="checkmark"></div>
-                </li>
-            </ul>
-        </div>
-        <div class="menu__visibility">
-            <h2>Escolha a visibilidade:</h2>
-            <ul>
-                <li data-identifier="visibility">
-                    <div>
-                        <img src="assets/lock-open.svg " alt="ícone de um cadeado aberto">
-                        <p>Público</p>
-                    </div>
-                    <div class="checkmark checked"></div>
-                </li>
-                <li data-identifier="visibility">
-                    <div>
-                        <img src="assets/lock-closed.svg" alt="ícone de um cadeado fechado">
-                        <p>Reservadamente</p>
-                    </div>
-                    <div class="checkmark"></div>
-                </li>
-            </ul>
-        </div>
-    </section>
+    
     
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="script.js"></script>
