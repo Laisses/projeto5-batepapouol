@@ -22,7 +22,7 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #F3F3F3;
+    background-color: rgba(0, 0, 0, 0.05);
     font-size: 14px;
 }
 
@@ -158,6 +158,71 @@ body {
 .chatbox__button img {
     width: 26px;
 }
+
+.menu {
+    width: 70%;
+    height: 100%;
+    color: #000000;
+    background-color: #ffffff;
+    padding: 18px;
+    margin-bottom: 500px;
+}
+
+.menu__contacts h2, .menu__visibility h2 {
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.menu__visibility h2 {
+    margin-top: 30px;
+}
+
+.menu__contacts li, .menu__visibility li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.menu__contacts li div, .menu__visibility li div {
+    display: flex;
+    align-items: center;
+}
+
+.menu__contacts li div p, .menu__visibility li div p {
+    font-size: 16px;    
+}
+
+.menu__contacts li img, .menu__visibility li img {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+
+
+
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.checked {
+    width: 12px;
+    height: 10px;
+
+    background-image: url(./assets/Vector.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+/*.*/
 
 .hidden {
     display: none;
