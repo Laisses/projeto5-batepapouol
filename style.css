@@ -28,12 +28,13 @@ body {
 
 .login {
     font-family: 'Roboto', sans-serif;
-    background-color: #ffffff;   
+    background-color: #ffffff;
+    padding-bottom: 296px;
 }
 
 .login__logo {
-    margin-top: 72px;
-    margin-bottom: 92px;
+    padding-top: 72px;
+    padding-bottom: 92px;
     display: flex;
     justify-content: center;
 }
@@ -57,11 +58,7 @@ body {
     outline: none;
 }
 
-::placeholder {
-    text-decoration: none;
-    color: #aeaeae;
-    text-align: center;
-}
+
 
 .login__form button {
     width: 109px;
@@ -205,14 +202,20 @@ body {
     outline: none;
 }
 
-::placeholder, textarea {
+textarea::placeholder, textarea {
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
     font-weight: 400;
     color: #000000;
 }
 
-::placeholder {    
+input::placeholder {
+    text-decoration: none;
+    color: #aeaeae;
+    text-align: center;
+}
+
+textarea::placeholder {    
     font-style: italic;
 }
 

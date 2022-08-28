@@ -2,17 +2,18 @@ let userName;
 
 const checkNick = () => {
     const URL = "https://mock-api.driven.com.br/api/v6/uol/participants";
-    const user = {name: prompt("Qual o seu nome?")};
+    const user = {name: document.querySelector("#username").value};
 
     return axios.post(URL, user)
-        .then(res => {
+        .then(() => {
             userName = user;
         })
         .catch(err => {
             if (err.response.status === 400) {
-                alert("Esse nick já está em uso! Escolha outro.");
+                alert("Esse nick já está em uso! Escolha outro.");                
                 //checkNick();
             }
+            throw err;
         });
 };
 
@@ -20,7 +21,7 @@ const pingConnection = () => {
     const URL = "https://mock-api.driven.com.br/api/v6/uol/status";    
 
     axios.post(URL, userName)
-        .then(res => {
+        .then(() => {
             console.log("tô aqui ainda");
         })
         .catch(err => {
@@ -30,8 +31,10 @@ const pingConnection = () => {
 
 const getMessages = () => {
     const URL = "https://mock-api.driven.com.br/api/v6/uol/messages";
-    axios.get(URL)
+    return axios.get(URL)
         .then(res => {
+            document.querySelector(".login").classList.add("hidden");
+            document.querySelector(".chat").classList.remove("hidden");
             createMessages(res.data);
             document.querySelector("body").scrollIntoView(false);
         })
@@ -48,7 +51,7 @@ const createMessages = messages => {
         if (message.to !== userName && message.type === "private_message") {
             return false;
         } else {
-            return true
+            return true;
         }
     })
     .forEach(message => {
@@ -106,11 +109,9 @@ const sendPublicMessage = () => {
     }
 
     axios.post(URL, message)
-        .then(res => {
-            console.log(res);
-            messageContent = "";
+        .then(() => {
+            document.querySelector("textarea").value = "";
             placeholder = "";
-            getMessages();            
         })
         .catch(err => {
             console.log(err);
@@ -125,14 +126,22 @@ const sendMessagesWithEnter = (e) => {
     }
 };
 
-const controlaStuffTemp = () => {
-    checkNick().then(() => {   
-        setInterval(getMessages, 3000);
-        //getMessages();
-        setInterval(pingConnection, 5000);
-        //sendPublicMessage(); 
+const handleSubmit = (e) => {
+    e.preventDefault();
+    document.querySelector(".login__loading").classList.remove("hidden");
+    document.querySelector(".login__form").classList.add("hidden");
+    
+    checkNick().then(() => {
+        getMessages().then(() => {            
+            setInterval(getMessages, 3000);
+            setInterval(pingConnection, 5000);
+        }).catch((err) => console.log(err))
+    }).catch(() => {
+        document.querySelector(".login__loading").classList.add("hidden");
+        document.querySelector(".login__form").classList.remove("hidden");
     });
 };
 
-document.querySelector("button").onclick = sendPublicMessage;
+document.querySelector(".login__form button").onclick = handleSubmit;
+document.querySelector(".chatbox__button").onclick = sendPublicMessage;
 document.querySelector("textarea").onkeydown = sendMessagesWithEnter;
